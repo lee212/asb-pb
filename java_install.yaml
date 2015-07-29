@@ -1,0 +1,10 @@
+- hosts: ansible-test
+  remote_user: ubuntu
+  sudo: true
+  tasks:
+    - name: update apt-get 
+      apt: update_cache=yes
+    - name: install java
+      apt: name=openjdk-7-jre-headless  state=latest install_recommends=no
+
+
