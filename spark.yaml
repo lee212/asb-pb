@@ -1,0 +1,10 @@
+- hosts: ansible-test
+  remote_user: ubuntu
+  tasks:
+    - name: download spark
+      get_url: url=http://ftp.wayne.edu/apache/spark/spark-1.4.1/spark-1.4.1-bin-hadoop2.6.tgz dest=/home/ubuntu
+    - name: Unarchive spark
+      unarchive: src=/home/ubuntu/spark-1.4.1-bin-hadoop2.6.tgz dest=/home/ubuntu copy=no
+    - name: create a symlink
+      file: src=/home/ubuntu/spark-1.4.1-bin-hadoop2.6 dest=/home/ubuntu/spark state=link
+
